@@ -7,19 +7,19 @@ The below cmdlet update ubuntu
 
 `$ sudo apt update`
 
-![screenshot](https://github.com/Tofumy/Tofumy-PBL3/blob/main/sudo-update.JPG)
+![screenshot](https://github.com/Tofumy/Tofumy_PBL3/blob/main/sudo-update.JPG)
 
 The below cmdlet upgrade ubuntu
 
 `$ sudo apt upgrade`
 
-![screenshot](https://github.com/Tofumy/Tofumy-PBL3/blob/main/sudo-upgrade.JPG)
+![screenshot](https://github.com/Tofumy/Tofumy_PBL3/blob/main/sudo-upgrade.JPG)
 
 We used the below to get the location of Node.js software from Ubuntu repositories.
 
 `curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -`
 
-![screenshot](https://github.com/Tofumy/Tofumy-PBL3/blob/main/nodejs-location.JPG)
+![screenshot](https://github.com/Tofumy/Tofumy_PBL3/blob/main/nodejs-location.JPG)
 
 
 ## Install Nodejs on the server
@@ -28,7 +28,7 @@ Installed Node.js with the command below
 
 `sudo apt-get install -y nodejs`
 
-![screenshot](https://github.com/Tofumy/Tofumy-PBL3/blob/main/install-node.JPG)
+![screenshot](https://github.com/Tofumy/Tofumy_PBL3/blob/main/install-node.JPG)
 
 We verified the node and npm installation with the commands below
 
@@ -36,7 +36,7 @@ We verified the node and npm installation with the commands below
 
 `npm -v` 
 
-![screenshot](https://github.com/Tofumy/Tofumy-PBL3/blob/main/node-npm-ver.JPG)
+![screenshot](https://github.com/Tofumy/Tofumy_PBL3/blob/main/node-npm-ver.JPG)
 
 
 
