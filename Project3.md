@@ -183,67 +183,111 @@ module.exports = router;
 
 ![screenshot](https://github.com/Tofumy/Tofumy_PBL3/blob/main/vim-apijs.JPG)
 
+In the "Todo" directory, installed Mongoose
+
+`npm install mongoose`
+
+![screenshot](https://github.com/Tofumy/Tofumy_PBL3/blob/main/install-mongoose.JPG)
+
+
+Created a new directory within the "Todo" folder and created a new file "todo.js" 
+
+`mkdir models && cd models && touch todo.js`
+
+![screenshot](https://github.com/Tofumy/Tofumy_PBL3/blob/main/mkdir-models-todojs.JPG)
+
+Opened the file with this `vim todo.js` using the vim text editor and pasted the code below in the file:
+
+``` javascript
+
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+//create schema for todo
+const TodoSchema = new Schema({
+action: {
+type: String,
+required: [true, 'The todo text field is required']
+}
+})
+
+//create model for todo
+const Todo = mongoose.model('todo', TodoSchema);
+
+module.exports = Todo;
+
+```
+
+![screenshot](https://github.com/Tofumy/Tofumy_PBL3/blob/main/vim-todojs.JPG)
+
+In the Routes directory, opened *api.js* with `vim api.js`, deleted the code inside with *:%d* command and pasted the below:
+
+``` javascript
+
+const express = require ('express');
+const router = express.Router();
+const Todo = require('../models/todo');
+
+router.get('/todos', (req, res, next) => {
+
+//this will return all the data, exposing only the id and action field to the client
+Todo.find({}, 'action')
+.then(data => res.json(data))
+.catch(next)
+});
+
+router.post('/todos', (req, res, next) => {
+if(req.body.action){
+Todo.create(req.body)
+.then(data => res.json(data))
+.catch(next)
+}else {
+res.json({
+error: "The input field is empty"
+})
+}
+});
+
+router.delete('/todos/:id', (req, res, next) => {
+Todo.findOneAndDelete({"_id": req.params.id})
+.then(data => res.json(data))
+.catch(next)
+})
+
+module.exports = router;
+
+```
+
+![screenshot](https://github.com/Tofumy/Tofumy_PBL3/blob/main/new-apijs1.JPG)
+
+![screenshot](https://github.com/Tofumy/Tofumy_PBL3/blob/main/new-apijs.JPG)
 
 
 
----
+### MongoDB Database
 
-We used the below cmdlet to confirm that Nginx server is active
+Created a Mongo DB using a DBaaS mLab which can be gotten from this link [mLab](https://www.mongodb.com/atlas-signup-from-mlab)
 
-`$ sudo systemctl status nginx`
 
-![screenshot](https://github.com/Tofumy/Tofumy-PBL2/blob/main/systemctl-status.JPG)
+In the *index.js* file, we specified *process.env* to access environment variables, so we have to create the process.env file
 
-Enabled the TCP Port 22 for the EC2 instance
+Created a file in the *Todo directory* and named it .env.
 
-![screenshot](https://github.com/Tofumy/Tofumy-PBL2/blob/main/inbound-rule.JPG)
+`touch .env`
 
-We just used it to confirm if we can access the nginx server locally 
+`vi .env`
 
-`$ curl http://localhost:80`
+![screenshot](https://github.com/Tofumy/Tofumy_PBL3/blob/main/vi-env.JPG)
 
-![screenshot](https://github.com/Tofumy/Tofumy-PBL2/blob/main/curl-localhost.JPG)
 
-`$ curl http://3.138.202.128:80`
+Added the connection string to access the database in it, using the below:
 
-![screenshot](https://github.com/Tofumy/Tofumy-PBL2/blob/main/curl-publicip.JPG)
+`DB = mongodb+srv://Tofumy:<password>@cluster1.qcl1a.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
 
-We tried to access the public Ip over the browser and below is the output
-
-![screenshot](https://github.com/Tofumy/Tofumy-PBL2/blob/main/browser-nginx.JPG)
+![screenshot](https://github.com/Tofumy/Tofumy_PBL3/blob/main/mongodb-connect.JPG)
 
 
 
 
-**Step 2** - Installing MySQL
-
-The below cmdlet installs the mysql in the server
-
-`$ sudo apt install mysql-server`
-
-![screenshot](https://github.com/Tofumy/Tofumy-PBL2/blob/main/install-mysql.JPG)
-
-The below cmdlet runs a security script that removes insecure default settings and lock down access to the database system
-
-`$ sudo mysql_secure_installation`
-
-![screenshot](https://github.com/Tofumy/Tofumy-PBL2/blob/main/secure-sql.JPG)
-
-
-This code verifies that we can log in to the MySQL server
-
-`$ sudo mysql`
-
-![screenshot](https://github.com/Tofumy/Tofumy-PBL2/blob/main/test-mysql.JPG)
-
-
-
-**Step 3** - Installing PHP
-
-The below cmdlet installs *php-fpm* (PHP fastCGI process manager) and *php-msql* (PHP module to communicate with MySQL-based databases)
-
-`$ sudo apt install php-fpm php-mysql`
-
-![screenshot](https://github.com/Tofumy/Tofumy-PBL2/blob/main/php-install.JPG)
 
 
