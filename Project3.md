@@ -293,5 +293,75 @@ Added the connection string to access the database in it, using the below:
 <!--mLab, DB:u=Tofumy p=damilola18 mLab console: u=Tofumy p=damilola18  -->
 
 
+Updated the *index.js* to reflect the use of *.env* so that *Node.js* can connect to the database.
+
+
+Open the file with `vim index.js`
+
+- Press esc
+- Type :
+- Type %d
+- Hit ‘Enter’
+the whole content was deleted, then,
+
+Pressed *i* to enter the insert mode in vim
+
+Now, pasted the entire code below in the file.
+
+``` javascript
+
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const routes = require('./routes/api');
+const path = require('path');
+require('dotenv').config();
+
+const app = express();
+
+const port = process.env.PORT || 5000;
+
+//connect to the database
+mongoose.connect(process.env.DB, { useNewUrlParser: true })
+.then(() => console.log(`Database connected successfully`))
+.catch(err => console.log(err));
+
+//since mongoose promise is depreciated, we overide it with node's promise
+mongoose.Promise = global.Promise;
+
+app.use((req, res, next) => {
+res.header("Access-Control-Allow-Origin", "\*");
+res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+next();
+});
+
+app.use(bodyParser.json());
+
+app.use('/api', routes);
+
+app.use((err, req, res, next) => {
+console.log(err);
+next();
+});
+
+app.listen(port, () => {
+console.log(`Server running on port ${port}`)
+});
+Using environment variables to store information is considered more secure and best practice to separate configuration and secret data from the application, instead of writing connection strings directly inside the index.js application file.
+
+```
+
+![screenshot](https://github.com/Tofumy/Tofumy_PBL3/blob/main/new-vim-indexjs.JPG)
+
+
+Started the server using the command:
+
+`node index.js`
+
+
+Below was a screen shot showing we connected to Database succesfully
+
+![screenshot](https://github.com/Tofumy/Tofumy_PBL3/blob/main/node-test-db.JPG)
+
 
 
