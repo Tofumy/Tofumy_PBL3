@@ -432,5 +432,27 @@ Change directory to the Todo folder and run the below:
 
 Your app should open and start running on *localhost:3000*
 
+![screenshot](https://github.com/Tofumy/Tofumy_PBL3/blob/main/npm-dev-run.JPG)
+
+Created a custom inbound rule to allow port 3000
+
+![screenshot](https://github.com/Tofumy/Tofumy_PBL3/blob/main/port3000.JPG)
+
 
 <!-- ps aux | grep npm    that cmd helps to list processes running in the linux terminal -->
+
+### Creating your React Components
+
+<!-- One of the advantages of react is that it makes use of components, which are reusable and also makes code modular. For our Todo app, there will be two stateful components and one stateless component. --> 
+
+- From the *Todo directory* ran `cd client` and moved to the *src* directory using `cd src`
+- Inside the *src folder*, created another folder called *components* using `mkdir components`
+- Changed directory to the *components* folder using `cd components`
+- Inside the ‘components’ directory created three files *Input.js*, *ListTodo.js* and *Todo.js*.
+`touch Input.js ListTodo.js Todo.js`
+
+![screenshot](https://github.com/Tofumy/Tofumy_PBL3/blob/main/components-js.JPG)
+
+
+
+
