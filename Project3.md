@@ -367,6 +367,9 @@ Below was a screen shot showing we connected to Database succesfully
 
 
 
+
+
+
 ### Testing Backend Code without Frontend using RESTful API
 
 
@@ -384,6 +387,50 @@ In the Todo directory, I ran the below code which will create a "client director
 
 ![screenshot](https://github.com/Tofumy/Tofumy_PBL3/blob/main/npx-react-client.JPG)
 
+Had to install some react js dependencies
+
+Installed *concurrently* using the below: 
+
+`npm install concurrently --save-dev`
+
+Installed *nodemon* using the below:
+
+`npm install nodemon --save-dev`
+
+<!-- It is used to run and monitor the server. If there is any change in the server code, nodemon will restart it automatically and load the new changes. -->
 
 
+We edited the *package.json* file (only the script section) using the vim text editor and pasted the below
 
+``` javascript
+
+"scripts": {
+"start": "node index.js",
+"start-watch": "nodemon index.js",
+"dev": "concurrently \"npm run start-watch\" \"cd client && npm start\""
+},
+
+```
+
+![screenshot](https://github.com/Tofumy/Tofumy_PBL3/blob/main/vim-package-json.JPG)
+
+
+We need to configure Proxy in *package.json*
+
+- Changed directory to ‘client’ using `cd client`
+- Opened the package.json file using `vi package.json`
+- Added the key value pair in the *package.json* file  `"proxy": "http://localhost:5000".`
+
+![screenshot](https://github.com/Tofumy/Tofumy_PBL3/blob/main/proxy-package-json.JPG)
+
+ 
+<!-- The whole purpose of adding the proxy configuration is to make it possible to access the application directly from the browser by simply calling the server url like http://localhost:5000 rather than always including the entire path like http://localhost:5000/api/todos -->
+
+Change directory to the Todo folder and run the below:
+
+`npm run dev`
+
+Your app should open and start running on *localhost:3000*
+
+
+<!-- ps aux | grep npm    that cmd helps to list processes running in the linux terminal -->
