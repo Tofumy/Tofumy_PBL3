@@ -133,6 +133,8 @@ Tried to access the server’s Public IP to test the Express JS
 
 ![screenshot](https://github.com/Tofumy/Tofumy_PBL3/blob/main/testing-node-public.JPG)
 
+
+
 ### Create Routes
 
 **There are three actions to do for the To-Do application**
@@ -362,6 +364,26 @@ Started the server using the command:
 Below was a screen shot showing we connected to Database succesfully
 
 ![screenshot](https://github.com/Tofumy/Tofumy_PBL3/blob/main/node-test-db.JPG)
+
+
+
+### Testing Backend Code without Frontend using RESTful API
+
+
+
+
+
+**Step 2** - Frontend creation
+---
+ 
+We used the *create-react-app* command to scaffold our app.
+
+In the Todo directory, I ran the below code which will create a "client directory" in the "Todo directory":
+
+`npx create-react-app client`
+
+![screenshot](https://github.com/Tofumy/Tofumy_PBL3/blob/main/npx-react-client.JPG)
+
 
 
 
