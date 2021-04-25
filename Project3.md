@@ -780,9 +780,9 @@ Navigated to the Todo directory using `cd ../..` and then run the below to start
 
 Ouput of the app:
 
-![screenshot](https://github.com/Tofumy/Tofumy_PBL3/blob/main/new-app1.JPG)
+![screenshot](https://github.com/Tofumy/Tofumy_PBL3/blob/main/todo-app1.JPG)
 
-![screenshot](https://github.com/Tofumy/Tofumy_PBL3/blob/main/new-app2.JPG)
+![screenshot](https://github.com/Tofumy/Tofumy_PBL3/blob/main/todo-app2.JPG)
 
 
 
